@@ -23,3 +23,70 @@
 - `cd bypass/`
 - `python manage.py runserver`
 - open `http://127.0.0.1:8000/`
+
+## API
+### API root - '/api'
+
+
+#### 1. Sign Up
+
+URL = `/users`
+
+METHOD = `POST`
+
+Input:
+```
+{
+    "username": "test_username",
+    "first_name": "test_fname",
+    "last_name": "test_lname",
+    "email": "tst@gmail.com",
+    "password": "test_pwd_123"
+}
+```
+Output:
+```
+{
+    "url": "{domain}/api/users/7/",
+    "username": "test_username",
+    "first_name": "test_fname",
+    "last_name": "test_lname",
+    "email": "tst@gmail.com"
+}
+```
+####2. Sign In
+
+URL = `/login`
+
+Input: 
+```
+{
+    "username":"test_username",
+    "password":"test_pwd_123"
+}
+```
+Output:
+```
+{
+    "token": "e73934e5d6ce255f8d7d907767f16bcfd2705bf8",
+    "user_id": 7,
+    "username": "test_username"
+}
+```
+####3. Logout
+
+URL = '/logout'
+
+Input (headers):
+```
+{
+    "Authorization": "Token e73934e5d6ce255f8d7d907767f16bcfd2705bf8"
+}
+```
+
+Output:
+```
+{
+    "success": "Successfully logged out."
+}
+```
