@@ -90,3 +90,59 @@ Output:
     "success": "Successfully logged out."
 }
 ```
+
+#### 4. Product list
+
+URL = '/products'
+
+GET:
+```
+[
+    {
+        "id": 1,
+        "title": "ELECTRO-HARMONIX Ravish Sitar",
+        "price": 9350,
+        "image": "/media/5947365739284.jpg",
+        "product_type": "Foot controller",
+        "brand": "Muz",
+        "working_principle": "Digital",
+        "weight": 0.75
+    },
+    {
+        "id": 2,
+        "title": "Гитарная педаль TC Electronic",
+        "price": 3850,
+        "image": "/media/85846532608706.jpeg",
+        "product_type": "Guitar pedal",
+        "brand": "TC Electronic",
+        "working_principle": "Analog",
+        "weight": 0.75
+    }
+]
+```
+POST:
+(form-data)
+```
+"image": `file`
+"title": "ELECTRO-HARMONIX Ravish Sitar"
+"price': 9350, 
+"product_type": "Foot controller"
+"brand": "MusicJaba'
+"working_principle": "Digital"
+"weight": 0.67
+```
+
+Responce:
+
+```
+{
+    "id": 3,
+    "title": "test_post",
+    "price": 100,
+    "image": "/media/doge_GhQQ5Y6.jpg",
+    "product_type": 2,
+    "brand": "onsha",
+    "working_principle": 1,
+    "weight": 0.5
+}
+```
