@@ -24,6 +24,13 @@
 - `python manage.py runserver`
 - open `http://127.0.0.1:8000/`
 
+## Web app instalation
+- `install yarn`
+- `cd web`
+- `yarn`
+- `yarn start`
+- visit `http://127.0.0.1:3000/`
+
 ## API
 ### API root - '/api'
 
