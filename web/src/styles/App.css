@@ -1,0 +1,53 @@
+ul {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+form.register, form.login {
+    padding: 10px
+}
+
+form button {
+    padding: 5px;
+    min-width: 40px;
+}
+
+form.register input, form.login input {
+    display: block;
+    min-width: 200px;
+    margin: 20px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+div.body {
+    padding-left: 40px
+}
+
+li.header-link {
+    padding: 20px
+}
+
+.header {
+    overflow: hidden;
+    background: cornsilk;
+}
+ul.header-list {
+    padding-inline-start: 0px;
+}
+
+div form {
+    width: auto
+}
+
+form.auth-form {
+    margin: 0 auto;
+    width: 45%;
+    padding: 60px;
+    background: lightcyan;
+}
