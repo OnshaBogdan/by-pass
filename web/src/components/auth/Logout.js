@@ -5,7 +5,7 @@ export default class Logout extends Component {
     constructor(props) {
         super(props)
 
-        props.onTokenChange("")
+        props.onTokenChange("", -1)
     }
     render() {
         return (

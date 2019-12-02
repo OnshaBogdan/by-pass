@@ -9,15 +9,19 @@ export default class App extends Component {
         super(props)
 
         let token = cookie.load('token')
+        let user_id = cookie.load('user_id')
         if (token === "undefined" || token === undefined) {
             token = ""
+            user_id = -1
             cookie.save('token', token, { path: '/' })
+            cookie.save('user_id', user_id, { path: '/' })
         }
 
         this.state = {
             "token": token,
             "proxy": "http://127.0.0.1:8000",
-            "basket": []
+            "basket": [],
+            "user_id": user_id
         }
         this.onTokenChange = this.onTokenChange.bind(this)
         this.addToBasket = this.addToBasket.bind(this)
@@ -34,9 +38,10 @@ export default class App extends Component {
         console.log(product)
     }
 
-    onTokenChange(token) {
+    onTokenChange(token, user_id = -1) {
         cookie.save('token', token, { path: '/' })
-        this.setState({token: token})
+        cookie.save('user_id', user_id, { path: '/' })
+        this.setState({token: token, user_id: user_id})
     }
 
     render() {
@@ -47,6 +52,7 @@ export default class App extends Component {
                     addToBasket={this.addToBasket}
                     remFromBasket={this.remFromBasket}
                     basket={this.state.basket}
+                    user_id={this.state.user_id}
                 />
         );
     }

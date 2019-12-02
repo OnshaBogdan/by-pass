@@ -83,7 +83,7 @@ export default class Registration extends Component {
                         body: JSON.stringify(data)
                     }).then(response => {
                             response.json().then(data => {
-                                this.props.onTokenChange(data['token'])
+                                this.props.onTokenChange(data.token, data.user_id)
                         })
                     })}}
                 )

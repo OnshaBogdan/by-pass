@@ -48,7 +48,7 @@ export default class Login extends Component {
                     })
                 } 
                 else
-                    this.props.onTokenChange(obj['body']['token'])
+                    this.props.onTokenChange(obj['body']['token'], obj.body.user_id)
             })
         event.preventDefault()
     }

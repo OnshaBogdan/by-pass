@@ -48,34 +48,25 @@ export default class Header extends Component {
                     <div className="body">
                         <Switch>
                             <Route exact path="/">
-                                <Home 
-                                    token={this.props.token}
-                                    proxy={this.props.proxy}
-                                    basket={this.props.basket}
-                                    addToBasket={this.props.addToBasket}
-                                    remFromBasket={this.props.remFromBasket}
-                                />
+                                <Home {...this.props}/>
                             </Route>
                             <Route exact path="/about">
                                 <About />
                             </Route>
                             <Route exact path="/profile">
-                                <Profile 
-                                    proxy={this.props.proxy}
-                                    token={this.props.token}    
-                                    />
+                                <Profile {...this.props}/>
                             </Route>
                             <Route exact path="/basket">
-                                <Basket/>
+                                <Basket {...this.props}/>
                             </Route>
                             <Route exact path="/signup">
-                                <Registration proxy={this.props.proxy} token={this.props.token} onTokenChange={this.props.onTokenChange}/>
+                                <Registration {...this.props}/>
                             </Route>
                             <Route exact path="/login">
-                                <Login proxy={this.props.proxy} token={this.props.token} onTokenChange={this.props.onTokenChange} />
+                                <Login {...this.props}/>
                             </Route>
                             <Route exact path="/logout">
-                                <Logout token={this.props.token} onTokenChange={this.props.onTokenChange}/>
+                                <Logout {...this.props}/>
                             </Route>
                             <Route exact component={NotFound} />
                         </Switch>

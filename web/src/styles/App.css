@@ -26,6 +26,7 @@ form.register input, form.login input {
 }
 
 div.body {
+    padding: 20px;
     padding-left: 40px
 }
 
