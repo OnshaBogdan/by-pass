@@ -29,7 +29,7 @@ export default class Header extends Component {
                                 
                             ) : ( 
                                 <li className="header-link" style={{ float: "right" }}>
-                                <Link to="/signup">Sign up</Link>
+                                    <Link to="/login">Login</Link>
                                 </li>
                                 
                             )}
@@ -39,7 +39,7 @@ export default class Header extends Component {
                                 </li>
                             ) : (
                                 <li className="header-link" style={{ float: "right" }}>
-                                    <Link to="/login">Login</Link>
+                                    <Link to="/signup">Sign up</Link>
                                 </li>
                             )}
                         </ul>

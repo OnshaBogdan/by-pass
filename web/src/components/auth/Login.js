@@ -57,7 +57,7 @@ export default class Login extends Component {
         return (
             <div>
             {this.props.token !== "" && (
-                <Redirect to="/profile"/>
+                <Redirect to="/"/>
             )}
             <form className="auth-form" onSubmit={this.handleSubmit}>
                 <h2>Log in</h2>

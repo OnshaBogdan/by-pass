@@ -96,7 +96,7 @@ export default class Registration extends Component {
         return (
             <div>
                 {this.props.token !== "" && (
-                    <Redirect to="/profile"/>
+                    <Redirect to="/"/>
                 )}
                 <form className="auth-form" onSubmit={this.handleSubmit}>
                     <h2>Sign up</h2>
