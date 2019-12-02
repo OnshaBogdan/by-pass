@@ -153,3 +153,13 @@ Responce:
     "weight": 0.5
 }
 ```
+
+#### 5. User list
+
+URL = '/users/'
+Methods = ['GET', 'POST']
+
+#### 5. User Detail
+
+URL = '/users/<pk>'
+Methods = ['GET', 'PUT', 'DELETE']
