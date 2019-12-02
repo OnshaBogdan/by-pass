@@ -32,6 +32,10 @@ export default class Registration extends Component {
             })
         }
 
+        this.setState({
+            error: ""
+        })
+
         let data = {
             "username": this.state.username,
             "password": this.state.password,
@@ -78,18 +82,11 @@ export default class Registration extends Component {
                         referrer: 'no-referrer',
                         body: JSON.stringify(data)
                     }).then(response => {
-                        response.json().then(data => ({
-                            status: response.status,
-                            data: data
-                    }).then(obj => {
-                        if (!(obj.status >= 200 && obj.status < 300)) {
-                            console.log(obj.status)
-                            console.log(obj.data)
-                        } else {
-                            this.props.onTokenChange(data['token'])
-                        }
-                    }))})}
-                })
+                            response.json().then(data => {
+                                this.props.onTokenChange(data['token'])
+                        })
+                    })}}
+                )
             
 
         event.preventDefault()
@@ -98,7 +95,7 @@ export default class Registration extends Component {
     render() {
         return (
             <div>
-                {this.props.token === "" && (
+                {this.props.token !== "" && (
                     <Redirect to="/profile"/>
                 )}
                 <form className="auth-form" onSubmit={this.handleSubmit}>

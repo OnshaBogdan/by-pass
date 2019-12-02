@@ -16,14 +16,27 @@ export default class App extends Component {
 
         this.state = {
             "token": token,
-            "proxy": "http://127.0.0.1:8000"
+            "proxy": "http://127.0.0.1:8000",
+            "basket": []
         }
         this.onTokenChange = this.onTokenChange.bind(this)
+        this.addToBasket = this.addToBasket.bind(this)
+        this.remFromBasket = this.remFromBasket.bind(this)
+    }
+
+    remFromBasket(product) {
+        console.log("Remove from basket")
+        console.log(product)        
+    }
+
+    addToBasket(product) {
+        console.log("Add to basket")
+        console.log(product)
     }
 
     onTokenChange(token) {
-        this.setState({token: token})
         cookie.save('token', token, { path: '/' })
+        this.setState({token: token})
     }
 
     render() {
@@ -31,6 +44,9 @@ export default class App extends Component {
             <Header token={this.state.token} 
                     proxy={this.state.proxy}
                     onTokenChange={this.onTokenChange} 
+                    addToBasket={this.addToBasket}
+                    remFromBasket={this.remFromBasket}
+                    basket={this.state.basket}
                 />
         );
     }

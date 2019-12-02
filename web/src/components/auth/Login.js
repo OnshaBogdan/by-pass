@@ -26,9 +26,12 @@ export default class Login extends Component {
             "username": this.state.username,
             "password": this.state.password
         }
-            fetch(`${this.props.proxy}/api/login`, {
+
+        this.setState({
+            error: ""
+        })
+            fetch(`${this.props.proxy}/api/login/`, {
                 method: 'POST', 
-                mode: 'cors', 
                 cache: 'no-cache', 
                 credentials: 'same-origin', 
                 headers: {
@@ -37,16 +40,16 @@ export default class Login extends Component {
                 redirect: 'follow', 
                 referrer: 'no-referrer',
                 body: JSON.stringify(data)
-            }).then(response => {
-                response.json().then(data => ({
-                status: response.status,
-                data: data
-            })).then(obj => {
-                if (obj.status != 200)
-                    this.setState({error : obj.data.error})
+            }).then(r =>  r.json().then(data => ({status: r.status, body: data})))
+            .then(obj => {
+                if (obj.status === 404) {
+                    this.setState({
+                        'error': 'Wrong credentials'
+                    })
+                } 
                 else
-                    this.props.onTokenChange(obj.data['token'])
-            })})
+                    this.props.onTokenChange(obj['body']['token'])
+            })
         event.preventDefault()
     }
 
@@ -60,8 +63,8 @@ export default class Login extends Component {
                 <h2>Log in</h2>
                 <br/>
                 {this.state.error !== "" ? (
-                    <div>
-                        <h3 style={{color: "red"}}>{this.state.error}</h3>
+                    <div className='alert alert-danger'>
+                        {this.state.error}
                     </div>
                 ) : ( "" )}
                 <div className='form-group'>
