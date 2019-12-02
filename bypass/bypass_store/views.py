@@ -82,12 +82,12 @@ class ProductList(APIView):
     def get(self, request):
         products = Product.objects.all()
 
-        serializer = ProductSerializer(products, many=True)
+        serializer = ProductSerializer(products, many=True, context={'request': request})
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
 
-        file_serializer = ProductSerializer(data=request.data)
+        file_serializer = ProductSerializer(data=request.data, context={'request': request})
 
         if file_serializer.is_valid():
             file_serializer.save()
@@ -102,12 +102,12 @@ class UserList(APIView):
     def get(self, request):
         users = User.objects.all()
 
-        serializer = ProductSerializer(users, many=True)
+        serializer = UserSerializer(users, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
 
-        file_serializer = UserSerializer(data=request.data)
+        file_serializer = UserSerializer(data=request.data, context={'request': request})
 
         if file_serializer.is_valid():
             file_serializer.save()
@@ -130,7 +130,7 @@ class UserDetail(APIView):
 
     def get(self, request, pk, format=None):
         user = self.get_object(pk)
-        serializer = UserSerializer(user)
+        serializer = UserSerializer(user, context={'request': request})
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
