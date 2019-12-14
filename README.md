@@ -37,7 +37,7 @@
 
 #### 1. Sign Up
 
-URL = `/users`
+URL = `/users/`
 
 METHOD = `POST`
 
@@ -63,7 +63,9 @@ Output:
 ```
 ####2. Sign In
 
-URL = `/login`
+URL = `/login/`
+
+METHOD = `POST`
 
 Input: 
 ```
@@ -82,7 +84,9 @@ Output:
 ```
 ####3. Logout
 
-URL = '/logout'
+URL = '/logout/'
+
+Method: Post
 
 Input (headers):
 ```
@@ -100,9 +104,9 @@ Output:
 
 #### 4. Product list
 
-URL = '/products'
+URL = '/products/'
 
-GET:
+##### GET:
 ```
 [
     {
@@ -127,10 +131,10 @@ GET:
     }
 ]
 ```
-POST:
+##### POST:
 (form-data)
 ```
-"image": `file`
+"image": `{{file}}`
 "title": "ELECTRO-HARMONIX Ravish Sitar"
 "price': 9350, 
 "product_type": "Foot controller"
@@ -139,27 +143,108 @@ POST:
 "weight": 0.67
 ```
 
-Responce:
+Response:
 
 ```
 {
     "id": 3,
-    "title": "test_post",
-    "price": 100,
-    "image": "/media/doge_GhQQ5Y6.jpg",
+    "title": "ELECTRO-HARMONIX Ravish Sitar",
+    "price": 9350,
+    "image": "/media/GhQQ5Y6.jpg",
     "product_type": 2,
-    "brand": "onsha",
-    "working_principle": 1,
-    "weight": 0.5
+    "brand": "MusicJaba",
+    "working_principle": Digital,
+    "weight": 0.67
 }
 ```
 
 #### 5. User list
 
-URL = '/users/'
+URL = '/users/{{pk}}/'
 Methods = ['GET', 'POST']
 
-#### 5. User Detail
 
-URL = '/users/<pk>'
+##### GET:
+
+Response:
+
+    ```
+    [
+    {
+        "url": "http://localhost:8000/api/users/2/",
+        "username": "test_1",
+        "first_name": "Test_fname",
+        "last_name": "Test_lname",
+        "email": "asdasd@gmail.com"
+    },
+    {
+        "url": "http://localhost:8000/api/users/3/",
+        "username": "afea",
+        "first_name": "test_fname3",
+        "last_name": "testsdgd_lname3",
+        "email": "test3@gmail.com"
+    },
+    ...]
+    ```
+##### POST:
+
+Body:
+```
+{
+    "username": "test322",
+    "first_name": "test_fname3",
+    "last_name": "testsdgd_lname3",
+    "email": "test3@gmail.com",
+    "password": "psfafaecsd"
+}
+```
+
+Response:
+```
+{
+    "url": "http://localhost:8000/api/users/5/",
+    "username": "test322",
+    "first_name": "test_fname3",
+    "last_name": "testsdgd_lname3",
+    "email": "test3@gmail.com"
+}
+```
+#### 5. User Detail
+URL = '/users/<pk>/'
 Methods = ['GET', 'PUT', 'DELETE']
+
+
+##### GET:
+Response:
+```
+{
+    "url": "http://localhost:8000/api/users/2/",
+    "username": "test_1",
+    "first_name": "Test_fname",
+    "last_name": "Test_lname",
+    "email": "onsha.bogdan2000@gmail.com"
+}
+```
+##### POST:
+Body:
+```
+{
+    "username": "test2",
+    "first_name": "test_fname3",
+    "last_name": "testsdgd_lname3",
+    "email": "test3@gmail.com",
+    "password": "test"
+}
+
+```
+Response:
+```
+{
+    "url": "http://localhost:8000/api/users/5/",
+    "username": "test2",
+    "first_name": "test_fname3",
+    "last_name": "testsdgd_lname3",
+    "email": "test3@gmail.com"
+}
+```
+

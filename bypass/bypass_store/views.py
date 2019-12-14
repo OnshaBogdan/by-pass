@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from rest_framework import viewsets, status
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
-    HTTP_404_NOT_FOUND,
     HTTP_200_OK
 )
 from rest_framework.views import APIView
@@ -49,7 +48,7 @@ def login(request):
     if not user:
         return Response(
             {'error': 'Invalid Credentials'},
-            status=HTTP_404_NOT_FOUND
+            status=HTTP_400_BAD_REQUEST
         )
     token, _ = Token.objects.get_or_create(user=user)
 
